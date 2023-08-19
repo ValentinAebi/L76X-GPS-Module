@@ -20,10 +20,10 @@ class config(object):
         GPIO.output(ser.STANDBY, GPIO.HIGH)
         
     def Uart_SendByte(ser, value): 
-        ser.serial.write(value) 
+        ser.serial.write(value.encode()) 
         
     def Uart_SendString(ser, value): 
-        ser.serial.write(value)
+        ser.serial.write(value.encode())
   
 
     def Uart_ReceiveByte(ser): 
@@ -31,7 +31,7 @@ class config(object):
 
     def Uart_ReceiveString(ser, value): 
         data = ser.serial.read(value)
-        return data
+        return str(data)
         
     def Uart_Set_Baudrate(ser, Baudrate):
          ser.serial = serial.Serial("/dev/ttyS0",Baudrate)
